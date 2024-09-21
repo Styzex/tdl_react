@@ -9,15 +9,18 @@ This is a to-do list application hence the name TDL built using the stack below
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
 - [Clerk](https://clerk.com/)
+- [Zod](https://zod.dev/)
 
 # TODO
 
 - [x] Initial commit
-- [ ] Deploy the application
-- [ ] Make a DB
+- [x] Deploy the application (vercel)
+- [ ] Make a DB (vercel postgers)
 - [ ] Implement Drizzle ORM
-- [ ] Design and implement UI using Tailwind CSS
+- [ ] Implement UI (tailwind)
 - [ ] Integrate tRPC for API management
-- [ ] Integrate Clerk for user authentication
-- [ ] Develop core features for to-do list management
+- [ ] Authentication (clerk)
+- [ ] Routing/dashboard page (parallel routing)
+- [ ] Delete/Add button (server actions)
+- [ ] Edit button (server actions)
 - [ ] Test and debug the application
