@@ -8,6 +8,9 @@ import {
   serial,
   timestamp,
   varchar,
+  text,
+  integer,
+  jsonb,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -18,19 +21,24 @@ import {
  */
 export const createTable = pgTableCreator((name) => `tdl_react_${name}`);
 
-export const posts = createTable(
-  "post",
-  {
-    id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
-    ),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+export const users = createTable("post", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 256 }),
+  email: text("email"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
+    () => new Date(),
+  ),
+});
+
+export const sessions = createTable("sessions", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id"),
+  sessionId: text("session_id"),
+  lastActivity: timestamp("last_activity", { withTimezone: true })
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  metadata: jsonb("metadata").default(sql`JSONB_BUILD_ARRAY()`),
+});
