@@ -1,13 +1,10 @@
-import Link from "next/link";
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { db } from "~/server/db";
+import { DashLink } from "./_components/dashlink";
 
-const navLinks = [
-  { href: "/login", text: "Login" },
-  { href: "/signup", text: "SignUp" },
-  { href: "/dashboard", text: "Dashboard" },
-];
+export const dynamic = "force-dynamic";
 
-const CallUsersFunc = async () => {
+const UsersFunc = async () => {
   const usersList = await db.query.users.findMany();
   console.log(usersList);
   return <div></div>;
@@ -26,13 +23,15 @@ export default function HomePage() {
       </p>
       <p>To get started, sign up or log in using the buttons below.</p>
       <div className="mt-5 flex flex-col flex-wrap items-center">
-        {navLinks.map((link) => (
-          <Link key={link.text} href={link.href}>
-            {link.text}
-          </Link>
-        ))}
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton />
+        </SignedOut>
+        <SignedIn>
+          <DashLink />
+        </SignedIn>
       </div>
-      <CallUsersFunc />
+      <UsersFunc />
     </main>
   );
 }

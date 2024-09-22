@@ -15,11 +15,11 @@ This is a to-do list application hence the name TDL built using the stack below
 
 - [x] Initial commit
 - [x] Deploy the application (vercel)
-- [ ] Make a DB (vercel postgers)
-- [ ] Implement Drizzle ORM
-- [ ] Implement UI (tailwind)
+- [x] Make a DB (vercel postgers)
+- [x] Implement Drizzle ORM
+- [x] Implement UI (tailwind)
+- [x] Authentication (clerk)
 - [ ] Integrate tRPC for API management
-- [ ] Authentication (clerk)
 - [ ] Routing/dashboard page (parallel routing)
 - [ ] Delete/Add button (server actions)
 - [ ] Edit button (server actions)

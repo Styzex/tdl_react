@@ -23,8 +23,8 @@ export const createTable = pgTableCreator((name) => `tdl_react_${name}`);
 
 export const users = createTable("post", {
   id: serial("id").primaryKey(),
-  name: varchar("name", { length: 256 }),
-  email: text("email"),
+  name: varchar("name", { length: 256 }).notNull(),
+  email: text("email").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
@@ -34,11 +34,13 @@ export const users = createTable("post", {
 });
 
 export const sessions = createTable("sessions", {
-  id: serial("id").primaryKey(),
-  userId: integer("user_id"),
-  sessionId: text("session_id"),
+  id: serial("id").primaryKey().notNull(),
+  userId: integer("user_id").notNull(),
+  sessionId: text("session_id").notNull(),
   lastActivity: timestamp("last_activity", { withTimezone: true })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  metadata: jsonb("metadata").default(sql`JSONB_BUILD_ARRAY()`),
+  metadata: jsonb("metadata")
+    .default(sql`JSONB_BUILD_ARRAY()`)
+    .notNull(),
 });
