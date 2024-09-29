@@ -4,7 +4,11 @@ import Link from "next/link";
 export function Home() {
   return (
     <div>
-      <Link href="/">Home</Link>
+      <Link href="/">
+        <button className="justify-center rounded-lg font-bold text-[#ffffff]">
+          Home
+        </button>
+      </Link>
     </div>
   );
 }

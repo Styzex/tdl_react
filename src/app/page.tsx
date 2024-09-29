@@ -1,6 +1,7 @@
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { db } from "~/server/db";
 import { DashLink } from "./_components/dashlink";
+import { AboutLink } from "./_components/aboutlink";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,7 @@ const UsersFunc = async () => {
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#000000] to-[#1b1b1b] text-white">
       <h1 className="mb-5 text-3xl">Welcome to TDL!</h1>
       <p>
         Explore and manage your workspace <a>effortlessly</a> with TDL.
@@ -30,6 +31,7 @@ export default function HomePage() {
         <SignedIn>
           <DashLink />
         </SignedIn>
+        <AboutLink />
       </div>
       <UsersFunc />
     </main>

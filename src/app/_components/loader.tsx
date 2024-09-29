@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { zoomies } from "ldrs";
+import {} from "ldrs";
 import "ldrs/zoomies";
 
 export default function Loader() {
